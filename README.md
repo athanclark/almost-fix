@@ -16,7 +16,7 @@ almostFix b f
 will run `f` until `b` returns `False`.
 
 ```haskell
-almostFix True f ~ fix f
+almostFix True f  ~  f . f . f ...
 ```
 
 ### Monadic Predicates
