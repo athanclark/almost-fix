@@ -4,7 +4,7 @@ import Control.Monad
 
 
 -- | Applies the predicate to the input:
--- @almostFix (< 5) (+1) 0  =  @
+-- @almostFix (< 5) (+1) 0  =  (((0+1)+1)+1)+1@
 almostFix :: (a -> Bool) -> (a -> a) -> a -> a
 almostFix p f x = if p x then almostFix p f (f x)
                          else x
