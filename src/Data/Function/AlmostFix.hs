@@ -4,15 +4,10 @@ import Control.Monad
 
 
 -- | Applies the predicate to the input:
--- @almostFix (< 5) (+1) 0  =  (((0+1)+1)+1)+1@
+-- @almostFix (< 5) (+1) 0  =  4@
 almostFix :: (a -> Bool) -> (a -> a) -> a -> a
 almostFix p f x = if p x then almostFix p f (f x)
                          else x
-
--- | Applies the predicate to the result.
-almostFix' :: (a -> Bool) -> (a -> a) -> a -> a
-almostFix' p f x = if p (f x) then almostFix' p f (f x)
-                              else x
 
 -- | Use a monadic predicate for the control flow.
 almostFixM :: Monad m => m Bool -> (a -> m a) -> a -> m a
